@@ -1,0 +1,19 @@
+{% extends "layout" %}
+
+{% from "_forms" import action_buttons %}
+
+{% block title %}New alias{% endblock %}
+
+{% block content %}
+  <div class="page-header">
+    <h1>Add a new alias</h1>
+  </div>
+
+  {{ form_open({'route': 'aliases.store', 'method': 'post', 'class': 'form-horizontal', 'role': 'form'}) }}
+
+    {% include "aliases/_form" %}
+
+    {{ action_buttons(route('aliases.index')) }}
+
+  {{ form_close() }}
+{% endblock %}

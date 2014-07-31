@@ -1,0 +1,45 @@
+{% extends "layout" %}
+
+{% import "_helpers" as helpers %}
+
+{% block title %}Domains{% endblock %}
+
+{% block content %}
+  <div class="page-header">
+    <h1>Domains <a href="{{ route('domains.create') }}" class="btn btn-success pull-right" title="Add a new domain">
+        Add new</a></h1>
+  </div>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Domain name</th>
+      <th>Active?</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for domain in domains %}
+      <tr>
+        <td><a href="{{ route('domains.show', domain.id) }}">{{ domain.fqdn }}</a></td>
+        <td>{{ helpers.boolean_marker(domain.active) }}</td>
+        <td>
+          <div class="btn-group btn-group-sm">
+            <a href="{{ route('domains.show', domain.id) }}" class="btn btn-default">Details</a>
+            <a href="{{ route('domains.mailboxes', domain.id) }}" class="btn btn-default">Mailboxes</a>
+            <a href="{{ route('domains.aliases', domain.id) }}" class="btn btn-default">Aliases</a>
+            <a href="{{ route('domains.edit', domain.id) }}" class="btn btn-default">Edit</a>
+            <a href="{{ route('domains.delete', domain.id) }}" class="btn btn-danger">Delete</a>
+          </div>
+        </td>
+      </tr>
+    {% else %}
+      <tr>
+        <td colspan="3">No domains found. <a href="{{ route('domains.create') }}">Create</a> a new one.</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+  {{ domains.links | raw }}
+{% endblock %}

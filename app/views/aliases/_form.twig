@@ -1,0 +1,11 @@
+{% from "_forms" import text_field, password_field, list_field, boolean_field, action_buttons %}
+
+{{ form_hidden('active', 0) }}
+
+{{ list_field('domain_id', 'Domain', domains_list) }}
+
+{{ text_field('source', 'Source') }}
+
+{{ text_field('destination', 'Destination') }}
+
+{{ boolean_field('active', 'Active?') }}

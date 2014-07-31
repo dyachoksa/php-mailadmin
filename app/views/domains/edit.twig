@@ -1,0 +1,21 @@
+{% extends "layout" %}
+
+{% block title %}Edit domain{% endblock %}
+
+{% block content %}
+  <div class="page-header">
+    <h1>Edit <em>{{ domain.title }}</em></h1>
+  </div>
+
+  {{ form_model(domain, {'route': ['domains.update', domain.id], 'method': 'put', 'class': 'form-horizontal', 'role': 'form'}) }}
+
+    {{ form_hidden('active', 0) }}
+
+    {{ text_field('fqdn', 'Domain name') }}
+
+    {{ boolean_field('active', 'Active?') }}
+
+    {{ action_buttons(route('domains.index'), 'Save') }}
+
+  {{ form_close() }}
+{% endblock %}

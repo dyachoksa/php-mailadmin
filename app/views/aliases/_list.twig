@@ -1,0 +1,33 @@
+{% import "_helpers" as helpers %}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Domain</th>
+      <th>Source</th>
+      <th>Destination</th>
+      <th>Active?</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for alias in aliases %}
+      <tr>
+        <td>{{ alias.domain.fqdn }}</td>
+        <td>{{ alias.source }}</td>
+        <td>{{ alias.destination }}</td>
+        <td>{{ helpers.boolean_marker(alias.active) }}</td>
+        <td>
+          <div class="btn-group btn-group-sm">
+            <a href="{{ route('aliases.edit', alias.id) }}" class="btn btn-default">Edit</a>
+            <a href="{{ route('aliases.delete', alias.id) }}" class="btn btn-danger">Delete</a>
+          </div>
+        </td>
+      </tr>
+    {% else %}
+      <tr>
+        <td colspan="5">No aliases found. <a href="{{ route('aliases.create') }}">Create</a> a new one.</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>

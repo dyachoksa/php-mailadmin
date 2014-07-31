@@ -1,0 +1,7 @@
+{% macro boolean_marker(value) %}
+  {% if value %}
+    <span class="text-success glyphicon glyphicon-ok"></span>
+  {% else %}
+    <span class="text-danger glyphicon glyphicon-minus"></span>
+  {% endif %}
+{% endmacro %}

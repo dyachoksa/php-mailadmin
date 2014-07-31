@@ -1,0 +1,25 @@
+{% extends "layout" %}
+
+{% block title %}Delete domain{% endblock %}
+
+{% block content %}
+  <div class="page-header">
+    <h1>Delete <em>{{ domain.fqdn }}</em></h1>
+  </div>
+
+  {{ form_open({'route': ['domains.destroy', domain.id], 'method': 'delete', 'class': 'form-horizontal', 'role': 'form'}) }}
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-8">
+        <p>Do you really want to delete this domain? All mailboxes and aliases associated with it will be removed
+          too.</p>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-4 col-sm-8">
+        <button type="submit" class="btn btn-danger">Yes, delete!</button>
+        <a href="{{ route('domains.index') }}" class="btn btn-default">No, go back</a>
+      </div>
+    </div>
+  {{ form_close() }}
+{% endblock %}

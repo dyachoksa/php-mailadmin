@@ -1,0 +1,82 @@
+{% extends "layout.twig" %}
+
+{% import "_helpers" as helpers %}
+
+{% block title %}Index{% endblock %}
+
+{% block content %}
+  <div class="page-header">
+    <h1><em>MailAdmin</em> Dashboard</h1>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-5">
+      <div class="clearfix">
+        <h4 class="pull-left">Domains</h4>
+
+        {% if domains|length %}
+          <a href="{{ route('domains.index') }}" class="btn btn-info btn-sm pull-right">Show all</a>
+        {% endif %}
+      </div>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Domain name</th>
+            <th>Active?</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for domain in domains %}
+            <tr>
+              <td><a href="{{ route('domains.show', domain.id) }}">{{ domain.fqdn }}</a></td>
+              <td>{{ helpers.boolean_marker(domain.active) }}</td>
+              <td>
+                <div class="btn-group btn-group-sm">
+                  <a href="{{ route('domains.show', domain.id) }}" class="btn btn-default">View</a>
+                </div>
+              </td>
+            </tr>
+          {% else %}
+            <tr>
+              <td colspan="3">No domains found. <a href="{{ route('domains.create') }}">Create</a> a new one.</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-lg-7">
+      <h4>Graphs</h4>
+
+      {# TODO: implement me #}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-5">
+      <div class="clearfix">
+        <h4 class="pull-left">Latest mailboxes</h4>
+
+        {% if mailboxes|length %}
+          <a href="{{ route('mailboxes.index') }}" class="btn btn-info btn-sm pull-right">Show all</a>
+        {% endif %}
+      </div>
+
+      {% include "mailboxes/_list" %}
+    </div>
+
+    <div class="col-lg-7">
+      <div class="clearfix">
+        <h4 class="pull-left">Latest aliases</h4>
+
+        {% if aliases|length %}
+          <a href="{{ route('aliases.index') }}" class="btn btn-info btn-sm pull-right">Show all</a>
+        {% endif %}
+      </div>
+
+      {% include "aliases/_list" %}
+    </div>
+  </div>
+{% endblock %}

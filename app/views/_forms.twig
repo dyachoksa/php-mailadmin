@@ -1,0 +1,53 @@
+{% macro text_field(name, label) %}
+  <div class="form-group {% if errors.has(name) %}has-error{% endif %}">
+    {{ form_label(name, label, {'class': 'control-label col-sm-2 col-sm-offset-2'}) }}
+    <div class="col-sm-6">
+      {{ form_text(name, null, {'class': 'form-control'}) }}
+      {% if errors.has(name) %}
+        <span class="help-block">{{ errors.first(name) }}</span>
+      {% endif %}
+    </div>
+  </div>
+{% endmacro %}
+
+{% macro password_field(name, label) %}
+  <div class="form-group {% if errors.has(name) %}has-error{% endif %}">
+    {{ form_label(name, label, {'class': 'control-label col-sm-2 col-sm-offset-2'}) }}
+    <div class="col-sm-6">
+      {{ form_password(name, {'class': 'form-control'}) }}
+      {% if errors.has(name) %}
+        <span class="help-block">{{ errors.first(name) }}</span>
+      {% endif %}
+    </div>
+  </div>
+{% endmacro %}
+
+{% macro list_field(name, label, items) %}
+  <div class="form-group {% if errors.has(name) %}has-error{% endif %}">
+    {{ form_label(name, label, {'class': 'control-label col-sm-2 col-sm-offset-2'}) }}
+    <div class="col-sm-6">
+      {{ form_select(name, items, null, {'class': 'form-control'}) }}
+      {% if errors.has(name) %}
+        <span class="help-block">{{ errors.first(name) }}</span>
+      {% endif %}
+    </div>
+  </div>
+{% endmacro %}
+
+{% macro boolean_field(name, label) %}
+  <div class="form-group">
+    {{ form_label(name, label, {'class': 'text-right col-sm-2 col-sm-offset-2'}) }}
+    <div class="col-sm-8">
+      {{ form_checkbox(name, 1, true) }}
+    </div>
+  </div>
+{% endmacro %}
+
+{% macro action_buttons(back_link, submit_text="Create") %}
+  <div class="form-group">
+    <div class="col-sm-offset-4 col-sm-8">
+      <button type="submit" class="btn btn-primary">{{ submit_text }}</button>
+      <a href="{{ back_link }}" class="btn btn-default">Back</a>
+    </div>
+  </div>
+{% endmacro %}

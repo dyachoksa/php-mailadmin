@@ -1,0 +1,16 @@
+{% extends "layout" %}
+
+{% import "_helpers" as helpers %}
+
+{% block title %}Aliases{% endblock %}
+
+{% block content %}
+  <div class="page-header">
+    <h1>Aliases <a href="{{ route('aliases.create') }}" class="btn btn-success pull-right" title="Add a new alias">
+        Add new</a></h1>
+  </div>
+
+  {% include "aliases/_list" %}
+  
+  {{ aliases.links | raw }}
+{% endblock %}
