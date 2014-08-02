@@ -8,16 +8,20 @@
  * @property string $email
  * @property string $password
  * @property boolean $active
+ * @property \Carbon\Carbon $last_login
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ *
  * @property-read \Domain $domain
- * @method static \Illuminate\Database\Query\Builder|\Mailbox whereId($value) 
- * @method static \Illuminate\Database\Query\Builder|\Mailbox whereDomainId($value) 
- * @method static \Illuminate\Database\Query\Builder|\Mailbox whereEmail($value) 
- * @method static \Illuminate\Database\Query\Builder|\Mailbox wherePassword($value) 
- * @method static \Illuminate\Database\Query\Builder|\Mailbox whereActive($value) 
- * @method static \Illuminate\Database\Query\Builder|\Mailbox whereCreatedAt($value) 
- * @method static \Illuminate\Database\Query\Builder|\Mailbox whereUpdatedAt($value) 
+ *
+ * @method static \Illuminate\Database\Query\Builder|\Mailbox whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\Mailbox whereDomainId($value)
+ * @method static \Illuminate\Database\Query\Builder|\Mailbox whereEmail($value)
+ * @method static \Illuminate\Database\Query\Builder|\Mailbox wherePassword($value)
+ * @method static \Illuminate\Database\Query\Builder|\Mailbox whereActive($value)
+ * @method static \Illuminate\Database\Query\Builder|\Mailbox whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\Mailbox whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\Mailbox whereLastLogin($value)
  */
 class Mailbox extends Eloquent {
 
@@ -44,5 +48,12 @@ class Mailbox extends Eloquent {
      */
     public function domain() {
         return $this->belongsTo('Domain');
+    }
+
+    /**
+     * @return array
+     */
+    public function getDates() {
+        return ['created_at', 'updated_at', 'last_login'];
     }
 }
