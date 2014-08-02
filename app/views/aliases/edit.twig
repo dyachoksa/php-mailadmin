@@ -2,18 +2,19 @@
 
 {% from "_forms" import action_buttons %}
 
-{% block title %}Edit alias{% endblock %}
+{% block title %}{{ trans('mailadmin.edit_alias') }}{% endblock %}
 
 {% block content %}
   <div class="page-header">
-    <h1>Edit <em>{{ alias.source }}</em></h1>
+    <h1>{{ trans('mailadmin.edit') }} <em>{{ alias.source }}</em></h1>
   </div>
 
   {{ form_model(alias, {'route': ['aliases.update', alias.id], 'method': 'put', 'class': 'form-horizontal', 'role': 'form'}) }}
 
     {% include "aliases/_form" %}
 
-    {{ action_buttons(route('aliases.index'), 'Save') }}
+    {% set save_label = trans('mailadmin.save') %}
+    {{ action_buttons(route('aliases.index'), save_label) }}
 
   {{ form_close() }}
 {% endblock %}

@@ -2,18 +2,19 @@
 
 {% from "_forms" import action_buttons %}
 
-{% block title %}Edit mailbox{% endblock %}
+{% block title %}{{ trans('mailadmin.edit_mailbox') }}{% endblock %}
 
 {% block content %}
   <div class="page-header">
-    <h1>Edit <em>{{ mailbox.email }}</em></h1>
+    <h1>{{ trans('mailadmin.edit') }} <em>{{ mailbox.email }}</em></h1>
   </div>
 
   {{ form_model(mailbox, {'route': ['mailboxes.update', mailbox.id], 'method': 'put', 'class': 'form-horizontal', 'role': 'form'}) }}
 
     {% include "mailboxes/_form" %}
 
-    {{ action_buttons(route('mailboxes.index'), 'Save') }}
+    {% set save_label = trans('mailadmin.save') %}
+    {{ action_buttons(route('mailboxes.index'), save_label) }}
 
   {{ form_close() }}
 {% endblock %}

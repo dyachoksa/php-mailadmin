@@ -3,10 +3,10 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Domain</th>
-      <th>Source</th>
-      <th>Destination</th>
-      <th>Active?</th>
+      <th>{{ trans("mailadmin.domain") }}</th>
+      <th>{{ trans("mailadmin.source") }}</th>
+      <th>{{ trans("mailadmin.destination") }}</th>
+      <th>{{ trans("mailadmin.active") }}</th>
       <th></th>
     </tr>
   </thead>
@@ -19,14 +19,18 @@
         <td>{{ helpers.boolean_marker(alias.active) }}</td>
         <td>
           <div class="btn-group btn-group-sm">
-            <a href="{{ route('aliases.edit', alias.id) }}" class="btn btn-default">Edit</a>
-            <a href="{{ route('aliases.delete', alias.id) }}" class="btn btn-danger">Delete</a>
+            <a href="{{ route('aliases.edit', alias.id) }}" class="btn btn-default"
+               title="{{ trans("mailadmin.edit") }}">
+              <i class="glyphicon glyphicon-edit"></i></a>
+            <a href="{{ route('aliases.delete', alias.id) }}" class="btn btn-danger"
+               title="{{ trans("mailadmin.delete") }}">
+              <i class="glyphicon glyphicon-remove"></i></a>
           </div>
         </td>
       </tr>
     {% else %}
       <tr>
-        <td colspan="5">No aliases found. <a href="{{ route('aliases.create') }}">Create</a> a new one.</td>
+        <td colspan="5">{{ trans("mailadmin.no_aliases", {url: route('aliases.create')}) }}</td>
       </tr>
     {% endfor %}
   </tbody>

@@ -1,0 +1,9 @@
+{% from "_forms" import text_field, boolean_field %}
+
+{{ form_hidden('active', 0) }}
+
+{% set domain_name_title = trans('mailadmin.domain_name') %}
+{{ text_field('fqdn', domain_name_title) }}
+
+{% set active_title = trans('mailadmin.active') %}
+{{ boolean_field('active', active_title) }}

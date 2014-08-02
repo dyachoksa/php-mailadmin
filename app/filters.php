@@ -11,16 +11,20 @@
 |
 */
 
-App::before(function($request)
-{
+App::before(function($request) {
+    App::setLocale(Session::get('lang', Config::get('app.locale')));
+});
+
+
+App::after(function($request, $response) {
 	//
 });
 
 
-App::after(function($request, $response)
-{
-	//
+View::composer(['layout', 'layout.twig'], function($view) {
+    $view->with('current_lang', Session::get('lang', Config::get('app.locale')));
 });
+
 
 /*
 |--------------------------------------------------------------------------
@@ -33,10 +37,8 @@ App::after(function($request, $response)
 |
 */
 
-Route::filter('auth', function()
-{
-	if (Auth::guest())
-	{
+Route::filter('auth', function() {
+	if (Auth::guest()) {
 		if (Request::ajax())
 		{
 			return Response::make('Unauthorized', 401);

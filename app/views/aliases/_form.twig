@@ -2,10 +2,14 @@
 
 {{ form_hidden('active', 0) }}
 
-{{ list_field('domain_id', 'Domain', domains_list) }}
+{% set domain_label = trans('mailadmin.domain') %}
+{{ list_field('domain_id', domain_label, domains_list) }}
 
-{{ text_field('source', 'Source') }}
+{% set source_label = trans('mailadmin.source') %}
+{{ text_field('source', source_label) }}
 
-{{ text_field('destination', 'Destination') }}
+{% set destination_label = trans('mailadmin.destination') %}
+{{ text_field('destination', destination_label) }}
 
-{{ boolean_field('active', 'Active?') }}
+{% set active_label = trans('mailadmin.active') %}
+{{ boolean_field('active', active_label) }}

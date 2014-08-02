@@ -2,19 +2,22 @@
 
 {% import "_helpers" as helpers %}
 
-{% block title %}Domains{% endblock %}
+{% block title %}{{ trans("mailadmin.domains") }}{% endblock %}
 
 {% block content %}
   <div class="page-header">
-    <h1>Domains <a href="{{ route('domains.create') }}" class="btn btn-success pull-right" title="Add a new domain">
-        Add new</a></h1>
+    <h1>
+      {{ trans("mailadmin.domains") }}
+      <a href="{{ route('domains.create') }}" class="btn btn-success pull-right"
+         title="{{ trans("mailadmin.new_domain_title") }}">{{ trans("mailadmin.add") }}</a>
+    </h1>
   </div>
 
   <table class="table">
     <thead>
     <tr>
-      <th>Domain name</th>
-      <th>Active?</th>
+      <th>{{ trans("mailadmin.domain_name") }}</th>
+      <th>{{ trans("mailadmin.active") }}</th>
       <th></th>
     </tr>
     </thead>
@@ -25,17 +28,26 @@
         <td>{{ helpers.boolean_marker(domain.active) }}</td>
         <td>
           <div class="btn-group btn-group-sm">
-            <a href="{{ route('domains.show', domain.id) }}" class="btn btn-default">Details</a>
-            <a href="{{ route('domains.mailboxes', domain.id) }}" class="btn btn-default">Mailboxes</a>
-            <a href="{{ route('domains.aliases', domain.id) }}" class="btn btn-default">Aliases</a>
-            <a href="{{ route('domains.edit', domain.id) }}" class="btn btn-default">Edit</a>
-            <a href="{{ route('domains.delete', domain.id) }}" class="btn btn-danger">Delete</a>
+            <a href="{{ route('domains.show', domain.id) }}" class="btn btn-default"
+               title="{{ trans("mailadmin.view") }}"><i class="glyphicon glyphicon-list"></i></a>
+
+            <a href="{{ route('domains.mailboxes', domain.id) }}" class="btn btn-default"
+               title="{{ trans("mailadmin.mailboxes") }}"><i class="glyphicon glyphicon-envelope"></i></a>
+
+            <a href="{{ route('domains.aliases', domain.id) }}" class="btn btn-default"
+               title="{{ trans("mailadmin.aliases") }}"><i class="glyphicon glyphicon-share-alt"></i></a>
+
+            <a href="{{ route('domains.edit', domain.id) }}" class="btn btn-default"
+               title="{{ trans("mailadmin.edit") }}"><i class="glyphicon glyphicon-edit"></i></a>
+
+            <a href="{{ route('domains.delete', domain.id) }}" class="btn btn-danger"
+               title="{{ trans("mailadmin.delete") }}"><i class="glyphicon glyphicon-remove"></i></a>
           </div>
         </td>
       </tr>
     {% else %}
       <tr>
-        <td colspan="3">No domains found. <a href="{{ route('domains.create') }}">Create</a> a new one.</td>
+        <td colspan="3">{{ trans("mailadmin.no_domains", {url: route('domains.create')}) }}</td>
       </tr>
     {% endfor %}
     </tbody>

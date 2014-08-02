@@ -2,20 +2,16 @@
 
 {% from "_forms" import text_field, boolean_field, action_buttons %}
 
-{% block title %}New domain{% endblock %}
+{% block title %}{{ trans('mailadmin.new_domain') }}{% endblock %}
 
 {% block content %}
   <div class="page-header">
-    <h1>Add a new domain</h1>
+    <h1>{{ trans("mailadmin.new_domain_title") }}</h1>
   </div>
 
   {{ form_open({'route': 'domains.store', 'method': 'post', 'class': 'form-horizontal', 'role': 'form'}) }}
 
-    {{ form_hidden('active', 0) }}
-
-    {{ text_field('fqdn', 'Domain name') }}
-
-    {{ boolean_field('active', 'Active?') }}
+    {% include "domains/_form" %}
 
     {{ action_buttons(route('domains.index')) }}
 

@@ -1,29 +1,27 @@
-{% extends "layout.twig" %}
+{% extends "layout" %}
 
 {% import "_helpers" as helpers %}
 
-{% block title %}Index{% endblock %}
-
 {% block content %}
   <div class="page-header">
-    <h1><em>MailAdmin</em> Dashboard</h1>
+    <h1>{{ trans("mailadmin.dashboard") }}</h1>
   </div>
 
   <div class="row">
     <div class="col-lg-5">
       <div class="clearfix">
-        <h4 class="pull-left">Domains</h4>
+        <h4 class="pull-left">{{ trans("mailadmin.domains") }}</h4>
 
         {% if domains|length %}
-          <a href="{{ route('domains.index') }}" class="btn btn-info btn-sm pull-right">Show all</a>
+          <a href="{{ route('domains.index') }}" class="btn btn-info btn-sm pull-right">{{ trans("mailadmin.show_all") }}</a>
         {% endif %}
       </div>
 
       <table class="table">
         <thead>
           <tr>
-            <th>Domain name</th>
-            <th>Active?</th>
+            <th>{{ trans("mailadmin.domain_name") }}</th>
+            <th>{{ trans("mailadmin.active") }}</th>
             <th></th>
           </tr>
         </thead>
@@ -34,13 +32,14 @@
               <td>{{ helpers.boolean_marker(domain.active) }}</td>
               <td>
                 <div class="btn-group btn-group-sm">
-                  <a href="{{ route('domains.show', domain.id) }}" class="btn btn-default">View</a>
+                  <a href="{{ route('domains.show', domain.id) }}" class="btn btn-default"
+                     title="{{ trans("mailadmin.view") }}"><i class="glyphicon glyphicon-list"></i></a>
                 </div>
               </td>
             </tr>
           {% else %}
             <tr>
-              <td colspan="3">No domains found. <a href="{{ route('domains.create') }}">Create</a> a new one.</td>
+              <td colspan="3">{{ trans("mailadmin.no_domains", {url: route('domains.create')}) }}</td>
             </tr>
           {% endfor %}
         </tbody>
@@ -57,10 +56,10 @@
   <div class="row">
     <div class="col-lg-5">
       <div class="clearfix">
-        <h4 class="pull-left">Latest mailboxes</h4>
+        <h4 class="pull-left">{{ trans("mailadmin.latest_mailboxes") }}</h4>
 
         {% if mailboxes|length %}
-          <a href="{{ route('mailboxes.index') }}" class="btn btn-info btn-sm pull-right">Show all</a>
+          <a href="{{ route('mailboxes.index') }}" class="btn btn-info btn-sm pull-right">{{ trans("mailadmin.show_all") }}</a>
         {% endif %}
       </div>
 
@@ -69,10 +68,10 @@
 
     <div class="col-lg-7">
       <div class="clearfix">
-        <h4 class="pull-left">Latest aliases</h4>
+        <h4 class="pull-left">{{ trans("mailadmin.latest_aliases") }}</h4>
 
         {% if aliases|length %}
-          <a href="{{ route('aliases.index') }}" class="btn btn-info btn-sm pull-right">Show all</a>
+          <a href="{{ route('aliases.index') }}" class="btn btn-info btn-sm pull-right">{{ trans("mailadmin.show_all") }}</a>
         {% endif %}
       </div>
 

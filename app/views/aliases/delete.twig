@@ -1,23 +1,23 @@
 {% extends "layout" %}
 
-{% block title %}Delete alias{% endblock %}
+{% block title %}{{ trans('mailadmin.delete_alias') }}{% endblock %}
 
 {% block content %}
   <div class="page-header">
-    <h1>Delete <em>{{ alias.source }}</em></h1>
+    <h1>{{ trans('mailadmin.delete') }} <em>{{ alias.source }}</em></h1>
   </div>
 
   {{ form_open({'route': ['aliases.destroy', alias.id], 'method': 'delete', 'class': 'form-horizontal', 'role': 'form'}) }}
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-8">
-        <p>Do you really want to delete this alias? All related information will be removed too.</p>
+        <p>{{ trans('mailadmin.delete_alias_text') }}</p>
       </div>
     </div>
 
     <div class="form-group">
       <div class="col-sm-offset-4 col-sm-8">
-        <button type="submit" class="btn btn-danger">Yes, delete!</button>
-        <a href="{{ route('aliases.index') }}" class="btn btn-default">No, go back</a>
+        <button type="submit" class="btn btn-danger">{{ trans('mailadmin.delete_yes') }}</button>
+        <a href="{{ route('aliases.index') }}" class="btn btn-default">{{ trans('mailadmin.delete_no') }}</a>
       </div>
     </div>
   {{ form_close() }}

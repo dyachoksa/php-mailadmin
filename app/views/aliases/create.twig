@@ -2,11 +2,11 @@
 
 {% from "_forms" import action_buttons %}
 
-{% block title %}New alias{% endblock %}
+{% block title %}{{ trans('mailadmin.new_alias') }}{% endblock %}
 
 {% block content %}
   <div class="page-header">
-    <h1>Add a new alias</h1>
+    <h1>{{ trans('mailadmin.new_alias_title') }}</h1>
   </div>
 
   {{ form_open({'route': 'aliases.store', 'method': 'post', 'class': 'form-horizontal', 'role': 'form'}) }}

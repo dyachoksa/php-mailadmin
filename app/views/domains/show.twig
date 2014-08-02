@@ -2,22 +2,22 @@
 
 {% import "_helpers" as helpers %}
 
-{% block title %}View domain{% endblock %}
+{% block title %}{{ trans('mailadmin.view_domain') }}{% endblock %}
 
 {% block content %}
   <div class="page-header row">
-    <h1 class="col-md-10"> View <em>{{ domain.fqdn }}</em></h1>
-    <div class="col-md-2 text-right">
+    <h1 class="col-md-9">{{ trans('mailadmin.view') }} <em>{{ domain.fqdn }}</em></h1>
+    <div class="col-md-3 text-right">
       <div class="btn-group margin-top-20">
-        <a href="{{ route('domains.edit', domain.id) }}" class="btn btn-default">Edit</a>
-        <a href="{{ route('domains.delete', domain.id) }}" class="btn btn-danger">Delete</a>
+        <a href="{{ route('domains.edit', domain.id) }}" class="btn btn-default">{{ trans('mailadmin.edit') }}</a>
+        <a href="{{ route('domains.delete', domain.id) }}" class="btn btn-danger">{{ trans('mailadmin.delete') }}</a>
       </div>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-lg-5"><h4>Latest added mailboxes</h4></div>
-    <div class="col-lg-7"><h4>Latest added aliases</h4></div>
+    <div class="col-lg-5"><h4>{{ trans('mailadmin.latest_mailboxes') }}</h4></div>
+    <div class="col-lg-7"><h4>{{ trans('mailadmin.latest_aliases') }}</h4></div>
   </div>
 
   <div class="row">
@@ -25,15 +25,13 @@
       <table class="table">
         <thead>
           <tr>
-            <th>#</th>
             <th>Email</th>
-            <th>Active?</th>
+            <th>{{ trans('mailadmin.active') }}</th>
           </tr>
           </thead>
         <tbody>
           {% for mailbox in mailboxes %}
             <tr>
-              <td>{{ loop.index }}</td>
               <td>{{ mailbox.email }}</td>
               <td>{{ helpers.boolean_marker(mailbox.active) }}</td>
             </tr>
@@ -41,13 +39,15 @@
             {% if loop.last %}
               <tr>
                 <td colspan="3" class="text-right">
-                  <a href="{{ route('domains.mailboxes', domain.id) }}" class="btn btn-link">See more</a>
+                  <a href="{{ route('domains.mailboxes', domain.id) }}" class="btn btn-link">
+                    {{ trans('mailadmin.show_all') }}
+                  </a>
                 </td>
               </tr>
             {% endif %}
           {% else %}
             <tr>
-              <td colspan="3">No mailboxes found.</td>
+              <td colspan="2">{{ trans("mailadmin.no_mailboxes", {url: route('mailboxes.create')}) }}</td>
             </tr>
           {% endfor %}
         </tbody>
@@ -58,16 +58,14 @@
       <table class="table">
         <thead>
           <tr>
-            <th>#</th>
-            <th>Source</th>
-            <th>Destination</th>
-            <th>Active?</th>
+            <th>{{ trans("mailadmin.source") }}</th>
+            <th>{{ trans("mailadmin.destination") }}</th>
+            <th>{{ trans('mailadmin.active') }}</th>
           </tr>
         </thead>
         <tbody>
           {% for alias in aliases %}
             <tr>
-              <td>{{ loop.index }}</td>
               <td>{{ alias.source }}</td>
               <td>{{ alias.destination }}</td>
               <td>{{ helpers.boolean_marker(alias.active) }}</td>
@@ -75,14 +73,16 @@
 
             {% if loop.last %}
               <tr>
-                <td colspan="4" class="text-right">
-                  <a href="{{ route('domains.aliases', domain.id) }}" class="btn btn-link">See more</a>
+                <td colspan="3" class="text-right">
+                  <a href="{{ route('domains.aliases', domain.id) }}" class="btn btn-link">
+                    {{ trans('mailadmin.show_all') }}
+                  </a>
                 </td>
               </tr>
             {% endif %}
           {% else %}
             <tr>
-              <td colspan="6">No aliases found.</td>
+              <td colspan="6">{{ trans("mailadmin.no_aliases", {url: route('aliases.create')}) }}</td>
             </tr>
           {% endfor %}
         </tbody>

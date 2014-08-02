@@ -3,6 +3,8 @@
 class AliasesController extends \BaseController {
 
     public function __construct() {
+        parent::__construct();
+
         $this->beforeFilter('csrf', array('on' => 'post'));
     }
 
@@ -49,7 +51,8 @@ class AliasesController extends \BaseController {
 
 		Alias::create($data);
 
-        Session::flash('success_message', "Alias <em>{$data['source']}</em> successfully created.");
+        $msg = Lang::get('mailadmin.alias_success_created', ['source' => $data['source']]);
+        Session::flash('success_message', $msg);
 
 		return Redirect::route('aliases.index');
 	}
@@ -102,7 +105,8 @@ class AliasesController extends \BaseController {
 
 		$alias->update($data);
 
-        Session::flash('success_message', "Alias <em>{$data['source']}</em> successfully updated.");
+        $msg = Lang::get('mailadmin.alias_success_updated', ['source' => $data['source']]);
+        Session::flash('success_message', $msg);
 
 		return Redirect::route('aliases.index');
 	}

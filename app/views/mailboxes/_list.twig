@@ -4,8 +4,8 @@
   <thead>
     <tr>
       <th>Email</th>
-      <th>Domain</th>
-      <th>Active?</th>
+      <th>{{ trans("mailadmin.domain") }}</th>
+      <th>{{ trans("mailadmin.active") }}</th>
       <th></th>
     </tr>
   </thead>
@@ -17,14 +17,18 @@
         <td>{{ helpers.boolean_marker(mailbox.active) }}</td>
         <td>
           <div class="btn-group btn-group-sm">
-            <a href="{{ route('mailboxes.edit', mailbox.id) }}" class="btn btn-default">Edit</a>
-            <a href="{{ route('mailboxes.delete', mailbox.id) }}" class="btn btn-danger">Delete</a>
+            <a href="{{ route('mailboxes.edit', mailbox.id) }}" class="btn btn-default"
+               title="{{ trans("mailadmin.edit") }}">
+              <i class="glyphicon glyphicon-edit"></i></a>
+            <a href="{{ route('mailboxes.delete', mailbox.id) }}" class="btn btn-danger"
+               title="{{ trans("mailadmin.delete") }}">
+              <i class="glyphicon glyphicon-remove"></i></a>
           </div>
         </td>
       </tr>
     {% else %}
       <tr>
-        <td colspan="4">No mailboxes found. <a href="{{ route('mailboxes.create') }}">Create</a> a new one.</td>
+        <td colspan="4">{{ trans("mailadmin.no_mailboxes", {url: route('mailboxes.create')}) }}</td>
       </tr>
     {% endfor %}
   </tbody>

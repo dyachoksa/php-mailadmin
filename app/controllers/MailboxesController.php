@@ -3,6 +3,8 @@
 class MailboxesController extends \BaseController {
 
     public function __construct() {
+        parent::__construct();
+
         $this->beforeFilter('csrf', array('on' => 'post'));
     }
 
@@ -54,7 +56,8 @@ class MailboxesController extends \BaseController {
 
 		Mailbox::create($data);
 
-        Session::flash('success_message', "Mailbox <em>{$data['email']}</em> successfully created.");
+        $msg = Lang::get('mailadmin.mailbox_success_created', ['email' => $data['email']]);
+        Session::flash('success_message', $msg);
 
 		return Redirect::route('mailboxes.index');
 	}
@@ -119,7 +122,8 @@ class MailboxesController extends \BaseController {
         }
 		$mailbox->update($data);
 
-        Session::flash('success_message', "Mailbox <em>{$data['email']}</em> successfully updated.");
+        $msg = Lang::get('mailadmin.mailbox_success_updated', ['email' => $data['email']]);
+        Session::flash('success_message', $msg);
 
 		return Redirect::route('mailboxes.index');
 	}

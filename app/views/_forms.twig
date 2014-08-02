@@ -43,11 +43,11 @@
   </div>
 {% endmacro %}
 
-{% macro action_buttons(back_link, submit_text="Create") %}
+{% macro action_buttons(back_link, submit_text) %}
   <div class="form-group">
     <div class="col-sm-offset-4 col-sm-8">
-      <button type="submit" class="btn btn-primary">{{ submit_text }}</button>
-      <a href="{{ back_link }}" class="btn btn-default">Back</a>
+      <button type="submit" class="btn btn-primary">{{ submit_text|default(trans('mailadmin.create')) }}</button>
+      <a href="{{ back_link }}" class="btn btn-default">{{ trans('mailadmin.back') }}</a>
     </div>
   </div>
 {% endmacro %}

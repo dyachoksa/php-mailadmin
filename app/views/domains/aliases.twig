@@ -2,14 +2,16 @@
 
 {% import "_helpers" as helpers %}
 
-{% block title %}View domain mailboxes{% endblock %}
+{% block title %}{{ trans('mailadmin.view_aliases') }}{% endblock %}
 
 {% block content %}
   <div class="page-header row">
-    <h1 class="col-md-10"> View <em>{{ domain.fqdn }}</em> aliases</h1>
+    <h1 class="col-md-10">{{ trans('mailadmin.domain_view_aliases', {fqdn: domain.fqdn}) }}</h1>
+
     <div class="col-md-2 text-right">
       <div class="btn-group margin-top-20">
-        <a href="{{ route('domains.edit', domain.id) }}" class="btn btn-default" title="Edit domain">Edit</a>
+        <a href="{{ route('domains.edit', domain.id) }}" class="btn btn-default"
+           title="{{ trans("mailadmin.edit_domain") }}">{{ trans("mailadmin.edit") }}</a>
       </div>
     </div>
   </div>
@@ -17,30 +19,32 @@
   <table class="table">
     <thead>
       <tr>
-        <th>#</th>
-        <th>Source</th>
-        <th>Destination</th>
-        <th>Active?</th>
+        <th>{{ trans("mailadmin.source") }}</th>
+        <th>{{ trans("mailadmin.destination") }}</th>
+        <th>{{ trans("mailadmin.active") }}</th>
         <th></th>
       </tr>
     </thead>
     <tbody>
       {% for alias in aliases %}
         <tr>
-          <td>{{ loop.index }}</td>
           <td>{{ alias.source }}</td>
           <td>{{ alias.destination }}</td>
           <td>{{ helpers.boolean_marker(alias.active) }}</td>
           <td>
             <div class="btn-group btn-group-sm">
-              <a href="{{ route('aliases.edit', alias.id) }}" class="btn btn-default">Edit</a>
-              <a href="{{ route('aliases.delete', alias.id) }}" class="btn btn-danger">Delete</a>
+              <a href="{{ route('aliases.edit', alias.id) }}" class="btn btn-default"
+                 title="{{ trans("mailadmin.edit") }}">
+                <i class="glyphicon glyphicon-edit"></i></a>
+              <a href="{{ route('aliases.delete', alias.id) }}" class="btn btn-danger"
+                 title="{{ trans("mailadmin.delete") }}">
+                <i class="glyphicon glyphicon-remove"></i></a>
             </div>
           </td>
         </tr>
       {% else %}
         <tr>
-          <td colspan="5">No aliases found.</td>
+          <td colspan="4">{{ trans("mailadmin.no_aliases", {url: route('aliases.create')}) }}</td>
         </tr>
       {% endfor %}
     </tbody>

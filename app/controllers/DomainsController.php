@@ -3,6 +3,8 @@
 class DomainsController extends \BaseController {
 
     public function __construct() {
+        parent::__construct();
+
         $this->beforeFilter('csrf', array('on' => 'post'));
     }
 
@@ -44,7 +46,9 @@ class DomainsController extends \BaseController {
         }
 
         Domain::create($data);
-        Session::flash('success_message', "Domain <em>{$data['fqdn']}</em> successfully created.");
+
+        $msg = Lang::get('mailadmin.domain_success_created', ['fqdn' => $data['fqdn']]);
+        Session::flash('success_message', $msg);
 
 		return Redirect::route('domains.index');
 	}
@@ -130,7 +134,9 @@ class DomainsController extends \BaseController {
 		}
 
 		$domain->update($data);
-        Session::flash('success_message', "Domain <em>{$data['fqdn']}</em> successfully updated.");
+
+        $msg = Lang::get('mailadmin.domain_success_updated', ['fqdn' => $data['fqdn']]);
+        Session::flash('success_message', $msg);
 
 		return Redirect::route('domains.index');
 	}

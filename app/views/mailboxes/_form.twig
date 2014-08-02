@@ -2,10 +2,13 @@
 
 {{ form_hidden('active', 0) }}
 
-{{ list_field('domain_id', 'Domain', domains_list) }}
+{% set domain_title = trans('mailadmin.domain') %}
+{{ list_field('domain_id', domain_title, domains_list) }}
 
 {{ text_field('email', 'Email') }}
 
-{{ password_field('password', 'Password') }}
+{% set password_label = trans('mailadmin.password') %}
+{{ password_field('password', password_label) }}
 
-{{ boolean_field('active', 'Active?') }}
+{% set active_label = trans('mailadmin.active') %}
+{{ boolean_field('active', active_label) }}
