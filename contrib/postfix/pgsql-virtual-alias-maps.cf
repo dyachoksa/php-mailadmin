@@ -1,0 +1,6 @@
+user = <username>
+password = <password>
+hosts = <host>
+dbname = <database>
+
+query = SELECT destination FROM aliases WHERE source = '%s' AND active = t

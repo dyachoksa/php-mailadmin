@@ -1,0 +1,6 @@
+user = <username>
+password = <password>
+hosts = <host>
+dbname = <database>
+
+query = SELECT email FROM mailboxes WHERE email = '%s' AND active = t

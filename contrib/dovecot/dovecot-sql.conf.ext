@@ -1,0 +1,4 @@
+driver = pgsql
+connect = host=<host> dbname=<database> user=<user> password=<password>
+default_pass_scheme = BLF-CRYPT
+password_query = SELECT email as user, password FROM mailboxes WHERE email = '%u' AND active = t;
