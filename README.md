@@ -20,6 +20,7 @@ Requirements
 Installation
 ------------
 Clone or unpack source into separate directory.
+
 Run:
 
     composer install
@@ -28,7 +29,10 @@ or
 
     php composer.phar install
 
-Edit settings in **app/config/app.php**
+Edit database connection settings in **app/config/database.php** and base url in **app/config/app.php**.
+Then run:
+
+    php artisan migrate
 
 Point your virtual host's document root to **public** folder.
 

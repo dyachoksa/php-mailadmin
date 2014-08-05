@@ -1,5 +1,7 @@
 <?php
 
+use PHPassLib\Hash\SHA512Crypt;
+
 class MailboxesTableSeeder extends Seeder {
 
 	public function run()
@@ -7,7 +9,7 @@ class MailboxesTableSeeder extends Seeder {
 		Mailbox::create([
             'domain_id' => 1,
             'email' => 'user@example.com',
-            'password' => Hash::make('password'),
+            'password' => SHA512Crypt::hash('password', ['rounds' => 5000]),
         ]);
 	}
 

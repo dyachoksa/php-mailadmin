@@ -6,7 +6,8 @@
 	"require": {
 		"laravel/framework": "4.2.*",
         "barryvdh/laravel-twigbridge": "0.3.x",
-        "twig/extensions": "1.0.*"
+        "twig/extensions": "1.0.*",
+        "rych/phpass": "3.0.*@beta"
 	},
     "require-dev": {
         "phpunit/phpunit": "4.1.*",

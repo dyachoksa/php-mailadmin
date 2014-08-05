@@ -3,4 +3,4 @@ password = <password>
 hosts = <host>
 dbname = <database>
 
-query = SELECT 1 FROM domains WHERE fqdn = '%s' AND active = t
+query = SELECT 1 FROM domains WHERE fqdn = '%s' AND active = TRUE

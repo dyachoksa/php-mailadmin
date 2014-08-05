@@ -1,5 +1,7 @@
 <?php
 
+use PHPassLib\Hash\SHA512Crypt;
+
 class MailboxesController extends \BaseController {
 
     public function __construct() {
@@ -52,7 +54,7 @@ class MailboxesController extends \BaseController {
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
 
-        $data['password'] = Hash::make($data['password']);
+        $data['password'] = SHA512Crypt::hash($data['password'], ['rounds' => 5000]);
 
 		Mailbox::create($data);
 
@@ -118,8 +120,9 @@ class MailboxesController extends \BaseController {
 		}
 
         if (!empty($data['password'])) {
-            $data['password'] = Hash::make($data['password']);
+            $data['password'] = SHA512Crypt::hash($data['password'], ['rounds' => 5000]);
         }
+
 		$mailbox->update($data);
 
         $msg = Lang::get('mailadmin.mailbox_success_updated', ['email' => $data['email']]);
