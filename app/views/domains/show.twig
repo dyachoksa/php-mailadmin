@@ -32,7 +32,7 @@
         <tbody>
           {% for mailbox in mailboxes %}
             <tr>
-              <td>{{ mailbox.email }}</td>
+              <td><a href="{{ route('mailboxes.show', mailbox.id) }}">{{ mailbox.email }}</a></td>
               <td>{{ helpers.boolean_marker(mailbox.active) }}</td>
             </tr>
 

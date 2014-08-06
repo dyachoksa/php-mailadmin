@@ -14,6 +14,10 @@ return [
     'source' => "Исходный адрес",
     'destination' => "Целевой адрес",
     'password' => "Пароль",
+    'created_at' => "Создан",
+    'updated_at' => "Изменен",
+    'last_login' => "Последний вход",
+
     'add' => "Добавить",
     'back' => "Назад",
     'create' => "Создать",

@@ -1,13 +1,41 @@
 {% extends "layout" %}
 
+{% from "_helpers" import boolean_marker %}
+
 {% block title %}{{ trans('mailadmin.view_mailbox') }}{% endblock %}
 
 {% block content %}
-  <div class="page-header">
-    <h1>View mailbox: <em>{{ mailbox.email }}</em></h1>
+  <div class="page-header row">
+    <h1 class="col-md-9">{{ trans('mailadmin.view_mailbox') }}</h1>
+    <div class="col-md-3 text-right">
+      <div class="btn-group margin-top-20">
+        <a href="{{ route('mailboxes.edit', mailbox.id) }}" class="btn btn-default">{{ trans('mailadmin.edit') }}</a>
+        <a href="{{ route('mailboxes.delete', mailbox.id) }}" class="btn btn-danger">{{ trans('mailadmin.delete') }}</a>
+      </div>
+    </div>
   </div>
 
   <div class="row">
-    <div class="col-md-12">TODO: Add content here</div>
+    <div class="col-md-10 col-md-offset-2">
+      <dl class="dl-horizontal">
+        <dt>{{ trans('mailadmin.domain') }}</dt>
+        <dd>{{ mailbox.domain.fqdn }}</dd>
+
+        <dt>Email</dt>
+        <dd>{{ mailbox.email }}</dd>
+
+        <dt>{{ trans('mailadmin.active') }}</dt>
+        <dd>{{ boolean_marker(mailbox.active) }}</dd>
+
+        <dt>{{ trans('mailadmin.created_at') }}</dt>
+        <dd>{{ mailbox.created_at }}</dd>
+
+        <dt>{{ trans('mailadmin.updated_at') }}</dt>
+        <dd>{{ mailbox.updated_at }}</dd>
+
+        <dt>{{ trans('mailadmin.last_login') }}</dt>
+        <dd>{{ mailbox.last_login }}</dd>
+      </dl>
+    </div>
   </div>
 {% endblock %}

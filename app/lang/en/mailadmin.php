@@ -13,6 +13,10 @@ return [
     'source' => "Source",
     'destination' => "Destination",
     'password' => "Password",
+    'created_at' => "Created at",
+    'updated_at' => "Updated at",
+    'last_login' => "Last login",
+
     'add' => "Add new",
     'back' => "Back",
     'create' => "Create",

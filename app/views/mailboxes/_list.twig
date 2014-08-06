@@ -12,17 +12,17 @@
   <tbody>
     {% for mailbox in mailboxes %}
       <tr>
-        <td>{{ mailbox.email }}</td>
+        <td><a href="{{ route('mailboxes.show', mailbox.id) }}">{{ mailbox.email }}</a></td>
         <td>{{ mailbox.domain.fqdn }}</td>
         <td>{{ helpers.boolean_marker(mailbox.active) }}</td>
         <td>
           <div class="btn-group btn-group-sm">
+            <a href="{{ route('mailboxes.show', mailbox.id) }}" class="btn btn-default"
+               title="{{ trans("mailadmin.view") }}"><i class="glyphicon glyphicon-list"></i></a>
             <a href="{{ route('mailboxes.edit', mailbox.id) }}" class="btn btn-default"
-               title="{{ trans("mailadmin.edit") }}">
-              <i class="glyphicon glyphicon-edit"></i></a>
+               title="{{ trans("mailadmin.edit") }}"><i class="glyphicon glyphicon-edit"></i></a>
             <a href="{{ route('mailboxes.delete', mailbox.id) }}" class="btn btn-danger"
-               title="{{ trans("mailadmin.delete") }}">
-              <i class="glyphicon glyphicon-remove"></i></a>
+               title="{{ trans("mailadmin.delete") }}"><i class="glyphicon glyphicon-remove"></i></a>
           </div>
         </td>
       </tr>
