@@ -2,9 +2,13 @@
 
 return [
     'dashboard' => "Dashboard",
+
     'search' => "Search",
     'find' => "Find",
     'advanced_search' => "Advanced search",
+    'search_no_results' => "No results found.",
+    'search_results_for' => "Search results for \"<em>:q</em>\"",
+
     'show_all' => "Show all",
     'close' => "Close",
     'active' => "Active?",

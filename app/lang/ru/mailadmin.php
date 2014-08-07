@@ -2,9 +2,13 @@
 
 return [
     'dashboard' => "Главная",
+
     'search' => "Поиск",
     'find' => "Найти",
     'advanced_search' => "Расширенный поиск",
+    'search_no_results' => "По вашему запросу результатов не найденою.",
+    'search_results_for' => "Результаты поиска для \"<em>:q</em>\"",
+
     'show_all' => "Показать все",
     'close' => "Закрыть",
     'active' => "Активный?",

@@ -8,6 +8,8 @@
 
 Route::get('/', ['as' => 'index', 'uses' => 'HomeController@index']);
 
+Route::get('search', ['as' => 'search', 'uses' => 'SearchController@search']);
+
 Route::resource('domains', 'DomainsController');
 Route::get('domains/{id}/delete', ['as' => 'domains.delete', 'uses' => 'DomainsController@destroy_question']);
 Route::get('domains/{id}/mailboxes', ['as' => 'domains.mailboxes', 'uses' => 'DomainsController@showMailboxes']);

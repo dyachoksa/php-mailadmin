@@ -59,21 +59,21 @@
       </ul>
 
       <div class="col-xs-3 navbar-right">
-        <form action="" method="get" role="search" class="navbar-form">
+        {{ form_open({'route': 'search', 'method': 'get', 'class': 'navbar-form', 'role': 'search'}) }}
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="{{ trans("mailadmin.search") }}">
+            {{ form_text('q', null, {'class': 'form-control', 'placeholder': trans("mailadmin.search") }) }}
             <div class="input-group-btn">
-              <button type="button" class="btn btn-info">{{ trans("mailadmin.find") }}</button>
+              <button type="submit" class="btn btn-info">{{ trans("mailadmin.find") }}</button>
               <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
                 <span class="caret"></span>
                 <span class="sr-only">Toggle Dropdown</span>
               </button>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="#">{{ trans('mailadmin.advanced_search') }}</a></li>
+                <li><a href="{{ route('search') }}">{{ trans('mailadmin.advanced_search') }}</a></li>
               </ul>
             </div>
           </div><!-- /input-group -->
-        </form>
+        {{ form_close() }}
       </div>
     </div>
   </div><!-- /end of .container -->
