@@ -18,7 +18,7 @@ class UpdateLastLoginCommand extends Command {
 	 *
 	 * @var string
 	 */
-	protected $description = 'Update date and time of last login to mailbox.';
+	protected $description = 'Update date and time of last login to mailbox';
 
     /**
      * Create a new command instance.

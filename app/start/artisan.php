@@ -12,3 +12,4 @@
 */
 
 Artisan::add(new UpdateLastLoginCommand());
+Artisan::add(new ImportUsersCommand());
