@@ -42,4 +42,9 @@ class Domain extends Model
     {
         return $this->hasMany('App\Models\Alias');
     }
+
+    public function __toString()
+    {
+        return $this->fqdn;
+    }
 }

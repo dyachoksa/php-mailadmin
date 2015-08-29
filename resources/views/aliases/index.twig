@@ -1,0 +1,65 @@
+{% extends 'base' %}
+{% import 'macros.display' as display %}
+
+{% block page_title %}{{ trans('pages.aliases.title') }}{% endblock %}
+
+{% block title %}{{ trans('pages.aliases.title') }}{% endblock %}
+
+{% block content %}
+    <div class="box">
+        <div class="box-header">
+            <div class="box-tools">
+                <a href="{{ route('aliases.create') }}" class="btn btn-success btn-sm"
+                   title="{{ trans('pages.aliases.create_link_title') }}">
+                    {{ trans('labels.actions.create') }}
+                </a>
+            </div>
+        </div>
+
+        <div class="box-body table-responsive no-padding">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>{{ trans('models.domain.fqdn') }}</th>
+                        <th>{{ trans('models.alias.source') }}</th>
+                        <th>{{ trans('models.alias.destination') }}</th>
+                        <th>{{ trans('models.common.active') }}</th>
+                        <th>{{ trans('models.common.created_at') }}</th>
+                        <th>{{ trans('models.common.updated_at') }}</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for alias in aliases %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ alias.domain }}</td>
+                            <td>{{ alias.source }}</td>
+                            <td>{{ alias.destination }}</td>
+                            <td>{{ display.boolean_field(alias.active) }}</td>
+                            <td>{{ alias.created_at }}</td>
+                            <td>{{ alias.updated_at }}</td>
+                            <td>
+                                <div class="btn-group btn-group-sm">
+                                    <a href="{{ route('aliases.show', alias.id) }}" class="btn btn-default">
+                                        {{ trans('labels.actions.detail') }}
+                                    </a>
+                                    <a href="{{ route('aliases.edit', alias.id) }}" class="btn btn-default">
+                                        {{ trans('labels.actions.edit') }}
+                                    </a>
+                                    <a href="{{ route('aliases.destroy', alias.id) }}" class="btn btn-danger"
+                                       data-method="DELETE" data-token="{{ csrf_token() }}"
+                                       data-confirm="{{ trans('messages.common.delete_confirm') }}">
+                                        {{ trans('labels.actions.delete') }}
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

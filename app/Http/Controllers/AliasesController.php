@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\DomainRequest;
-use App\Models\Domain;
+use App\Http\Requests\AliasRequest;
+use App\Models\Alias;
 use Response;
 
-/**
- * Class DomainsController
- * @package App\Http\Controllers
- */
-class DomainsController extends Controller
+class AliasesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,9 +15,9 @@ class DomainsController extends Controller
      */
     public function index()
     {
-        $domains = Domain::orderBy('fqdn', 'asc')->get();
+        $aliases = Alias::with('domain')->orderBy('source', 'asc')->get();
 
-        return view('domains.index', compact('domains'));
+        return view('aliases.index', compact('aliases'));
     }
 
     /**
@@ -31,20 +27,21 @@ class DomainsController extends Controller
      */
     public function create()
     {
-        return view('domains.create');
+        return view('aliases.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  DomainRequest $request
+     * @param AliasRequest $request
      * @return Response
      */
-    public function store(DomainRequest $request)
+    public function store(AliasRequest $request)
     {
-        Domain::create($request->all());
+        Alias::create($request->all());
 
-        return redirect()->route('domains.index');
+        // todo: redirect to 'show' page
+        return redirect()->route('aliases.index');
     }
 
     /**
@@ -55,9 +52,9 @@ class DomainsController extends Controller
      */
     public function show($id)
     {
-        $domain = Domain::findOrFail($id);
+        $alias = Alias::findOrFail($id);
 
-        return view('domains.show', compact('domain'));
+        return view('aliases.show', compact('alias'));
     }
 
     /**
@@ -68,25 +65,25 @@ class DomainsController extends Controller
      */
     public function edit($id)
     {
-        $domain = Domain::findOrFail($id);
+        $alias = Alias::findOrFail($id);
 
-        return view('domains.edit', compact('domain'));
+        return view('aliases.edit', compact('alias'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  DomainRequest $request
-     * @param  int $id
+     * @param  AliasRequest  $request
+     * @param  int  $id
      * @return Response
      */
-    public function update(DomainRequest $request, $id)
+    public function update(AliasRequest $request, $id)
     {
-        $domain = Domain::findOrFail($id);
+        $alias = Alias::findOrFail($id);
 
-        $domain->update($request->all());
+        $alias->update($request->all());
 
-        return redirect()->route('domains.index');
+        return redirect()->route('aliases.index');
     }
 
     /**
@@ -97,8 +94,8 @@ class DomainsController extends Controller
      */
     public function destroy($id)
     {
-        Domain::destroy($id);
+        Alias::destroy($id);
 
-        return redirect()->route('domains.index');
+        return redirect()->route('aliases.index');
     }
 }

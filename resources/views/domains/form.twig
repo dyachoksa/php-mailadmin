@@ -1,4 +1,6 @@
 <div class="box-body">
+    {{ form_hidden('active', 0) }}
+
     <div class="form-group {% if errors.has('fqdn') %} has-error{% endif %}">
         {{ form_label('fqdn', 'Domain', {'class': 'col-md-2 control-label'}) }}
         <div class="col-md-10">

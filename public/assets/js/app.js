@@ -7,7 +7,7 @@
  * @Author  Almsaeed Studio
  * @Support <http://www.almsaeedstudio.com>
  * @Email   <support@almsaeedstudio.com>
- * @version 2.1.2
+ * @version 2.3.0
  * @license MIT <http://opensource.org/licenses/MIT>
  */
 
@@ -139,6 +139,9 @@ $.AdminLTE.options = {
  */
 $(function () {
   "use strict";
+
+  //Fix for IE page transitions
+  $("body").removeClass("hold-transition");
 
   //Extend options if external options exist
   if (typeof AdminLTEOptions !== "undefined") {
