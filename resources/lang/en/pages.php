@@ -26,4 +26,17 @@ return [
             'title' => 'Edit domain',
         ]
     ],
+
+    'mailboxes' => [
+        'title' => 'Mailboxes',
+        'create_link_title' => 'Create a new mailbox',
+
+        'create' => [
+            'title' => 'New mailbox',
+        ],
+
+        'edit' => [
+            'title' => 'Edit mailbox',
+        ]
+    ],
 ];

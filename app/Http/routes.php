@@ -16,4 +16,5 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::resource('domains', 'DomainsController');
     Route::resource('aliases', 'AliasesController');
+    Route::resource('mailboxes', 'MailboxesController');
 });

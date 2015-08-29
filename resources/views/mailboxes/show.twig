@@ -1,0 +1,44 @@
+{% extends 'base' %}
+{% import 'macros.display' as display %}
+
+{% block page_title %}{{ mailbox.email }}{% endblock %}
+
+{% block title %}{{ mailbox.email }}{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="box">
+                <div class="box-header">
+                    <div class="box-tools">
+                        <a href="{{ route('mailboxes.index') }}" class="btn btn-default btn-sm">
+                            {{ trans('labels.actions.back') }}
+                        </a>
+                    </div>
+                </div>
+
+                <div class="box-body">
+                    <dl class="dl-horizontal">
+                        <dt>{{ trans('models.domain.fqdn') }}</dt>
+                        <dd>{{ mailbox.domain }}</dd>
+
+                        <dt>{{ trans('models.mailbox.email') }}</dt>
+                        <dd>{{ mailbox.email }}</dd>
+
+                        <dt>{{ trans('models.common.active') }}</dt>
+                        <dd>{{ display.boolean_field(mailbox.active) }}</dd>
+
+                        <dt>{{ trans('models.mailbox.last_login') }}</dt>
+                        <dd>{{ mailbox.last_login }}</dd>
+
+                        <dt>{{ trans('models.common.created_at') }}</dt>
+                        <dd>{{ mailbox.created_at }}</dd>
+
+                        <dt>{{ trans('models.common.updated_at') }}</dt>
+                        <dd>{{ mailbox.updated_at }}</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base' %}
+
+{% block page_title %}{{ trans('pages.mailboxes.edit.title') }}{% endblock %}
+
+{% block title %}{{ trans('pages.mailboxes.edit.title') }}{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-offset-2 col-md-8">
+            <div class="box">
+                <div class="box-header"></div>
+
+                {{ form_model(mailbox, {'route': ['mailboxes.update', mailbox.id], 'method': 'PUT', 'class': 'form-horizontal', 'autocomplete': 'off'}) }}
+                    {% include 'mailboxes.form' %}
+                {{ form_close() }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'base' %}
+{% import 'macros.display' as display %}
+
+{% block page_title %}{{ trans('pages.mailboxes.title') }}{% endblock %}
+
+{% block title %}{{ trans('pages.mailboxes.title') }}{% endblock %}
+
+{% block content %}
+    <div class="box">
+        <div class="box-header">
+            <div class="box-tools">
+                <a href="{{ route('mailboxes.create') }}" class="btn btn-success btn-sm"
+                   title="{{ trans('pages.mailboxes.create_link_title') }}">
+                    {{ trans('labels.actions.create') }}
+                </a>
+            </div>
+        </div>
+
+        <div class="box-body table-responsive no-padding">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>{{ trans('models.domain.fqdn') }}</th>
+                        <th>{{ trans('models.mailbox.email') }}</th>
+                        <th>{{ trans('models.common.active') }}</th>
+                        <th>{{ trans('models.mailbox.last_login') }}</th>
+                        <th>{{ trans('models.common.created_at') }}</th>
+                        <th>{{ trans('models.common.updated_at') }}</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for mailbox in mailboxes %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ mailbox.domain }}</td>
+                            <td>{{ mailbox.email }}</td>
+                            <td>{{ display.boolean_field(mailbox.active) }}</td>
+                            <td>{{ mailbox.last_login }}</td>
+                            <td>{{ mailbox.created_at }}</td>
+                            <td>{{ mailbox.updated_at }}</td>
+                            <td>
+                                <div class="btn-group btn-group-sm">
+                                    <a href="{{ route('mailboxes.show', mailbox.id) }}" class="btn btn-default">
+                                        {{ trans('labels.actions.detail') }}
+                                    </a>
+                                    <a href="{{ route('mailboxes.edit', mailbox.id) }}" class="btn btn-default">
+                                        {{ trans('labels.actions.edit') }}
+                                    </a>
+                                    <a href="{{ route('mailboxes.destroy', mailbox.id) }}" class="btn btn-danger"
+                                       data-method="DELETE" data-token="{{ csrf_token() }}"
+                                       data-confirm="{{ trans('messages.common.delete_confirm') }}">
+                                        {{ trans('labels.actions.delete') }}
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

@@ -14,7 +14,7 @@ class ViewComposerProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer(['aliases.form'], function($view) {
+        view()->composer(['aliases.form', 'mailboxes.form'], function($view) {
             $domains = [];
 
             $query = Domain::select('id', 'fqdn')->orderBy('fqdn', 'asc')->get();
