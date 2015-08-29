@@ -1,0 +1,37 @@
+{% extends 'base' %}
+
+{% block page_title %}{{ domain.fqdn }}{% endblock %}
+
+{% block title %}{{ domain.fqdn }}{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="box">
+                <div class="box-header">
+                    <div class="box-tools">
+                        <a href="{{ route('domains.index') }}" class="btn btn-default btn-sm">
+                            {{ trans('labels.actions.back') }}
+                        </a>
+                    </div>
+                </div>
+
+                <div class="box-body">
+                    <dl class="dl-horizontal">
+                        <dt>{{ trans('models.domain.fqdn') }}</dt>
+                        <dd>{{ domain.fqdn }}</dd>
+
+                        <dt>{{ trans('models.common.active') }}</dt>
+                        <dd>
+                            {% if domain.active %}
+                                <img src="{{ asset('assets/img/16/ok-icon.png') }}" width="16" height="16" alt="Yes">
+                            {% else %}
+                                <img src="{{ asset('assets/img/16/minus-icon.png') }}" width="16" height="16" alt="No">
+                            {% endif %}
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

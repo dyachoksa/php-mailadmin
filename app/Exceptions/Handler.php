@@ -50,7 +50,7 @@ class Handler extends ExceptionHandler
 
         if (config('app.debug'))
         {
-            return $this->renderExceptionWithWhoops($e);
+            return $this->renderExceptionWithWhoops($request, $e);
         }
 
         return parent::render($request, $e);
