@@ -1,4 +1,5 @@
 {% extends 'base' %}
+{% import 'macros.display' as display %}
 
 {% block page_title %}{{ trans('pages.domains.title') }}{% endblock %}
 
@@ -34,11 +35,7 @@
                             <td>{{ loop.index }}</td>
                             <td>{{ domain.fqdn }}</td>
                             <td>
-                                {% if domain.active %}
-                                    <img src="{{ asset('assets/img/16/ok-icon.png') }}" width="16" height="16" alt="Yes">
-                                {% else %}
-                                    <img src="{{ asset('assets/img/16/minus-icon.png') }}" width="16" height="16" alt="No">
-                                {% endif %}
+                                {{ display.boolean_field(domain.active) }}
                             </td>
                             <td>{{ domain.created_at }}</td>
                             <td>{{ domain.updated_at }}</td>

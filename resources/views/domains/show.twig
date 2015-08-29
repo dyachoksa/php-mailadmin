@@ -1,4 +1,5 @@
 {% extends 'base' %}
+{% import 'macros.display' as display %}
 
 {% block page_title %}{{ domain.fqdn }}{% endblock %}
 
@@ -23,11 +24,7 @@
 
                         <dt>{{ trans('models.common.active') }}</dt>
                         <dd>
-                            {% if domain.active %}
-                                <img src="{{ asset('assets/img/16/ok-icon.png') }}" width="16" height="16" alt="Yes">
-                            {% else %}
-                                <img src="{{ asset('assets/img/16/minus-icon.png') }}" width="16" height="16" alt="No">
-                            {% endif %}
+                            {{ display.boolean_field(domain.active) }}
                         </dd>
                     </dl>
                 </div>

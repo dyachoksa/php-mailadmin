@@ -111,9 +111,9 @@ return [
             'TwigBridge\Extension\Laravel\Translator',
             'TwigBridge\Extension\Laravel\Url',
             
-             'TwigBridge\Extension\Laravel\Form',
-             'TwigBridge\Extension\Laravel\Html',
-            // 'TwigBridge\Extension\Laravel\Legacy\Facades',
+            'TwigBridge\Extension\Laravel\Form',
+            'TwigBridge\Extension\Laravel\Html',
+            //'TwigBridge\Extension\Laravel\Legacy\Facades',
 
             'Barryvdh\Debugbar\Twig\Extension\Debug',
             'Barryvdh\Debugbar\Twig\Extension\Dump',

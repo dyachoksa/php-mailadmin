@@ -1,0 +1,7 @@
+{% macro boolean_field(value) %}
+    {% if value %}
+        <img src="{{ asset('assets/img/16/ok-icon.png') }}" width="16" height="16" alt="Yes">
+    {% else %}
+        <img src="{{ asset('assets/img/16/minus-icon.png') }}" width="16" height="16" alt="No">
+    {% endif %}
+{% endmacro %}
