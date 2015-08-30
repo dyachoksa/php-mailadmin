@@ -1,8 +1,9 @@
 <div class="box-body">
     {{ form_hidden('active', 0) }}
 
+    {% set domain_id_label = trans('models.common.domain_id') %}
     <div class="form-group {% if errors.has('domain_id') %} has-error{% endif %}">
-        {{ form_label('domain_id', 'Domain', {'class': 'col-md-3 control-label'}) }}
+        {{ form_label('domain_id', domain_id_label, {'class': 'col-md-3 control-label'}) }}
         <div class="col-md-9">
             {{ form_select('domain_id', domains, null, {'placeholder': 'Select domain...', 'class': 'form-control'}) }}
             {% if errors.has('domain_id') %}
@@ -11,8 +12,9 @@
         </div>
     </div>
 
+    {% set source_label = trans('models.alias.source') %}
     <div class="form-group {% if errors.has('source') %} has-error{% endif %}">
-        {{ form_label('source', 'Source address', {'class': 'col-md-3 control-label'}) }}
+        {{ form_label('source', source_label, {'class': 'col-md-3 control-label'}) }}
         <div class="col-md-9">
             {{ form_text('source', null, {'class': 'form-control'}) }}
             {% if errors.has('source') %}
@@ -21,8 +23,9 @@
         </div>
     </div>
 
+    {% set destination_label = trans('models.alias.destination') %}
     <div class="form-group {% if errors.has('destination') %} has-error{% endif %}">
-        {{ form_label('destination', 'Destination', {'class': 'col-md-3 control-label'}) }}
+        {{ form_label('destination', destination_label, {'class': 'col-md-3 control-label'}) }}
         <div class="col-md-9">
             {{ form_text('destination', null, {'class': 'form-control'}) }}
             {% if errors.has('destination') %}

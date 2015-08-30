@@ -1,8 +1,9 @@
 <div class="box-body">
     {{ form_hidden('active', 0) }}
 
+    {% set fqdn_label = trans('models.domain.fqdn') %}
     <div class="form-group {% if errors.has('fqdn') %} has-error{% endif %}">
-        {{ form_label('fqdn', 'Domain', {'class': 'col-md-2 control-label'}) }}
+        {{ form_label('fqdn', fqdn_label, {'class': 'col-md-2 control-label'}) }}
         <div class="col-md-10">
             {{ form_text('fqdn', null, {'class': 'form-control'}) }}
             {% if errors.has('fqdn') %}
@@ -15,7 +16,7 @@
         <div class="col-md-offset-2 col-md-10">
             <div class="checkbox">
                 <label>
-                    {{ form_checkbox('active', '1', true) }} {{ trans('models.common.active') }}
+                    {{ form_checkbox('active') }} {{ trans('models.common.active') }}
                 </label>
             </div>
         </div>

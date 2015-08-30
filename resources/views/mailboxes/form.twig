@@ -1,8 +1,9 @@
 <div class="box-body">
     {{ form_hidden('active', 0) }}
 
+    {% set domain_id_label = trans('models.common.domain_id') %}
     <div class="form-group {% if errors.has('domain_id') %} has-error{% endif %}">
-        {{ form_label('domain_id', 'Domain', {'class': 'col-md-3 control-label'}) }}
+        {{ form_label('domain_id', domain_id_label, {'class': 'col-md-3 control-label'}) }}
         <div class="col-md-9">
             {{ form_select('domain_id', domains, null, {'placeholder': 'Select domain...', 'class': 'form-control'}) }}
             {% if errors.has('domain_id') %}
@@ -11,8 +12,9 @@
         </div>
     </div>
 
+    {% set email_label = trans('models.mailbox.email') %}
     <div class="form-group {% if errors.has('email') %} has-error{% endif %}">
-        {{ form_label('email', 'Email', {'class': 'col-md-3 control-label'}) }}
+        {{ form_label('email', email_label, {'class': 'col-md-3 control-label'}) }}
         <div class="col-md-9">
             {{ form_text('email', null, {'class': 'form-control', 'autocomplete': 'off'}) }}
             {% if errors.has('email') %}
@@ -21,8 +23,9 @@
         </div>
     </div>
 
+    {% set password_label = trans('models.mailbox.password') %}
     <div class="form-group {% if errors.has('password') %} has-error{% endif %}">
-        {{ form_label('password', 'Password', {'class': 'col-md-3 control-label'}) }}
+        {{ form_label('password', password_label, {'class': 'col-md-3 control-label'}) }}
         <div class="col-md-9">
             {{ form_password('password', {'class': 'form-control', 'autocomplete': 'off'}) }}
             {% if errors.has('password') %}
