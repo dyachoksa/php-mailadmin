@@ -15,7 +15,8 @@ class MailboxesController extends Controller
      */
     public function index()
     {
-        $mailboxes = Mailbox::with('domain')->orderBy('email', 'asc')->get();
+        // todo: get pagination size from config
+        $mailboxes = Mailbox::with('domain')->orderBy('email', 'asc')->paginate(25);
 
         return view('mailboxes.index', compact('mailboxes'));
     }

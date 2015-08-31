@@ -15,7 +15,8 @@ class AliasesController extends Controller
      */
     public function index()
     {
-        $aliases = Alias::with('domain')->orderBy('source', 'asc')->get();
+        // todo: get pagination size from config
+        $aliases = Alias::with('domain')->orderBy('source', 'asc')->paginate(25);
 
         return view('aliases.index', compact('aliases'));
     }

@@ -19,7 +19,8 @@ class DomainsController extends Controller
      */
     public function index()
     {
-        $domains = Domain::orderBy('fqdn', 'asc')->get();
+        // todo: get pagination size from config
+        $domains = Domain::orderBy('fqdn', 'asc')->paginate(25);
 
         return view('domains.index', compact('domains'));
     }
