@@ -14,6 +14,10 @@ return [
         ]
     ],
 
+    'dashboard' => [
+        'title' => 'Home',
+    ],
+
     'domains' => [
         'title' => 'Domains',
         'create_link_title' => 'Create a new domain',

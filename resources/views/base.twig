@@ -28,13 +28,10 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        {% block title %}Top Navigation <small>Example 2.0</small>{% endblock %}
+                        {% block title %}{% endblock %}
                     </h1>
-                    <ol class="breadcrumb">
-                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                        <li><a href="#">Layout</a></li>
-                        <li class="active">Top Navigation</li>
-                    </ol>
+
+                    {{ Breadcrumbs.renderIfExists() | raw }}
                 </section>
 
                 <!-- Main content -->
