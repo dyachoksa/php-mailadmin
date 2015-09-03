@@ -34,9 +34,7 @@
                         <tr>
                             <td>{{ loop.index }}</td>
                             <td>{{ domain.fqdn }}</td>
-                            <td>
-                                {{ display.boolean_field(domain.active) }}
-                            </td>
+                            <td>{{ display.boolean_field(domain.active) }}</td>
                             <td>{{ domain.created_at }}</td>
                             <td>{{ domain.updated_at }}</td>
                             <td>

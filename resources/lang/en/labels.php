@@ -14,6 +14,12 @@ return [
         'save' => 'Save',
         'cancel' => 'Cancel',
         'detail' => 'Detail',
-        'back' => 'Back'
+        'back' => 'Back',
+        'view_all' => 'View all',
+    ],
+
+    'other' => [
+        'active' => 'active',
+        'total' => 'total',
     ],
 ];

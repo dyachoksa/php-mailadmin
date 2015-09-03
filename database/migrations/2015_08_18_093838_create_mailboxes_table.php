@@ -16,7 +16,7 @@ class CreateMailboxesTable extends Migration
             $table->increments('id');
             $table->integer('domain_id')->unsigned();
             $table->string('email', 100)->unique();
-            $table->string('password', 128);
+            $table->string('password', 128)->nullable();
             $table->boolean('active')->default(true);
             $table->timestamp('last_login')->nullable();
             $table->timestamps();

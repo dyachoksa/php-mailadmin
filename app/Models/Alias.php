@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Query\Builder;
 
 /**
  * Mail aliases
@@ -17,13 +18,13 @@ use Illuminate\Database\Eloquent\Model;
  * 
  * @property-read \App\Models\Domain $domain
  * 
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Alias whereId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Alias whereDomainId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Alias whereSource($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Alias whereDestination($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Alias whereActive($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Alias whereCreatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Alias whereUpdatedAt($value)
+ * @method static Builder|Alias whereId($value)
+ * @method static Builder|Alias whereDomainId($value)
+ * @method static Builder|Alias whereSource($value)
+ * @method static Builder|Alias whereDestination($value)
+ * @method static Builder|Alias whereActive($value)
+ * @method static Builder|Alias whereCreatedAt($value)
+ * @method static Builder|Alias whereUpdatedAt($value)
  */
 class Alias extends Model
 {

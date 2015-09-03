@@ -1,9 +1,206 @@
 {% extends 'base' %}
+{% import 'macros.display' as display %}
 
-{% block page_title %}Welcome{% endblock %}
+{% block page_title %}{{ trans('pages.dashboard.title') }}{% endblock %}
 
-{% block title %}Dashboard{% endblock %}
+{% block title %}{{ trans('pages.dashboard.title') }}{% endblock %}
 
 {% block content %}
-    <h1>Welcome</h1>
+    <div class="row">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-aqua">
+                    <i class="fa fa-globe"></i>
+                </span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">{{ trans('pages.domains.title') }}</span>
+                    <span class="info-box-number">
+                        {{ total_active_domains }} / {{ total_domains }}
+                        <small class="text-gray">{{ trans('labels.other.active') }} / {{ trans('labels.other.total') }}</small>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-red">
+                    <i class="fa fa-user"></i>
+                </span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">{{ trans('pages.aliases.title') }}</span>
+                    <span class="info-box-number">
+                        {{ total_active_aliases }} / {{ total_aliases }}
+                        <small class="text-gray">{{ trans('labels.other.active') }} / {{ trans('labels.other.total') }}</small>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-green">
+                    <i class="fa fa-user"></i>
+                </span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">{{ trans('pages.mailboxes.title') }}</span>
+                    <span class="info-box-number">
+                        {{ total_active_mailboxes }} / {{ total_mailboxes }}
+                        <small class="text-gray">{{ trans('labels.other.active') }} / {{ trans('labels.other.total') }}</small>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">{{ trans('pages.mailboxes.title') }}</h3>
+
+                    <div class="box-tools">
+                        <a href="{{ route('mailboxes.index') }}" class="btn btn-success btn-sm">
+                            {{ trans('labels.actions.view_all') }}
+                        </a>
+                    </div>
+                </div>
+                <div class="box-body table-responsive no-padding">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>{{ trans('models.domain.fqdn') }}</th>
+                            <th>{{ trans('models.mailbox.email') }}</th>
+                            <th>{{ trans('models.common.active') }}</th>
+                            <th>{{ trans('models.mailbox.last_login') }}</th>
+                            <th>{{ trans('models.common.created_at') }}</th>
+                            <th>{{ trans('models.common.updated_at') }}</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        {% for mailbox in latest_mailboxes %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ mailbox.domain }}</td>
+                                <td>{{ mailbox.email }}</td>
+                                <td>{{ display.boolean_field(mailbox.active) }}</td>
+                                <td>{{ mailbox.last_login }}</td>
+                                <td>{{ mailbox.created_at }}</td>
+                                <td>{{ mailbox.updated_at }}</td>
+                                <td>
+                                    <a href="{{ route('mailboxes.show', mailbox.id) }}" class="btn btn-default">
+                                        {{ trans('labels.actions.detail') }}
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">{{ trans('pages.aliases.title') }}</h3>
+
+                    <div class="box-tools">
+                        <a href="{{ route('aliases.index') }}" class="btn btn-success btn-sm">
+                            {{ trans('labels.actions.view_all') }}
+                        </a>
+                    </div>
+                </div>
+                <div class="box-body table-responsive no-padding">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>{{ trans('models.domain.fqdn') }}</th>
+                            <th>{{ trans('models.alias.source') }}</th>
+                            <th>{{ trans('models.alias.destination') }}</th>
+                            <th>{{ trans('models.common.active') }}</th>
+                            <th>{{ trans('models.common.created_at') }}</th>
+                            <th>{{ trans('models.common.updated_at') }}</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        {% for alias in latest_aliases %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ alias.domain }}</td>
+                                <td>{{ alias.source }}</td>
+                                <td>{{ alias.destination }}</td>
+                                <td>{{ display.boolean_field(alias.active) }}</td>
+                                <td>{{ alias.created_at }}</td>
+                                <td>{{ alias.updated_at }}</td>
+                                <td>
+                                    <a href="{{ route('aliases.show', alias.id) }}" class="btn btn-default btn-sm">
+                                        {{ trans('labels.actions.detail') }}
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{ trans('pages.domains.title') }}</h3>
+
+                    <div class="box-tools">
+                        <a href="{{ route('domains.index') }}" class="btn btn-success btn-sm">
+                            {{ trans('labels.actions.view_all') }}
+                        </a>
+                    </div>
+                </div>
+                <div class="box-body table-responsive no-padding">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>{{ trans('models.domain.fqdn') }}</th>
+                                <th>{{ trans('models.common.active') }}</th>
+                                <th>{{ trans('models.common.created_at') }}</th>
+                                <th>{{ trans('models.common.updated_at') }}</th>
+                                <th>&nbsp;</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for domain in latest_domains %}
+                                <tr>
+                                    <td>{{ loop.index }}</td>
+                                    <td>{{ domain.fqdn }}</td>
+                                    <td>{{ display.boolean_field(domain.active) }}</td>
+                                    <td>{{ domain.created_at }}</td>
+                                    <td>{{ domain.updated_at }}</td>
+                                    <td>
+                                        <a href="{{ route('domains.show', domain.id) }}"
+                                           class="btn btn-default btn-sm">
+                                            {{ trans('labels.actions.detail') }}
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
