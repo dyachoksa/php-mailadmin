@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Eloquent;
 use Illuminate\Database\Query\Builder;
 
 /**
@@ -21,7 +21,7 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Domain whereCreatedAt($value)
  * @method static Builder|Domain whereUpdatedAt($value)
  */
-class Domain extends Model
+class Domain extends Eloquent
 {
     /**
      * The attributes that aren't mass assignable.

@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
+use Eloquent;
 use Hash;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
 
 /**
@@ -27,7 +27,7 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Mailbox whereUpdatedAt($value)
  * @method static Builder|Mailbox whereLastLogin($value)
  */
-class Mailbox extends Model
+class Mailbox extends Eloquent
 {
     /**
      * The attributes that aren't mass assignable.
