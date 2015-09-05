@@ -10,4 +10,8 @@ return [
         'name' => 'Name',
         'password' => 'Password',
     ],
+
+    'search' => [
+        'results_title' => 'Search results for <em>:q</em>',
+    ],
 ];

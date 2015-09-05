@@ -27,6 +27,10 @@ return [
         ]
     ],
 
+    'search' => [
+        'title' => 'Поиск',
+    ],
+
     'mailboxes' => [
         'title' => 'Почтовые адреса',
         'create_link_title' => 'Создать новый почтовый адрес',

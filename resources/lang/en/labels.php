@@ -16,10 +16,12 @@ return [
         'detail' => 'Detail',
         'back' => 'Back',
         'view_all' => 'View all',
+        'search' => 'Search',
     ],
 
     'other' => [
         'active' => 'active',
         'total' => 'total',
+        'search' => 'Search',
     ],
 ];

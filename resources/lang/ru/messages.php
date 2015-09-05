@@ -10,4 +10,8 @@ return [
         'name' => 'Имя',
         'password' => 'Пароль',
     ],
+
+    'search' => [
+        'results_title' => 'Результаты поиска для <em>:q</em>',
+    ],
 ];

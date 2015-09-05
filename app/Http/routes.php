@@ -14,7 +14,11 @@ Route::get('auth/logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getL
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/', ['as' => 'dashboard', 'uses' => 'DashboardController@index']);
 
+    Route::get('search', ['as' => 'search', 'uses' => 'SearchController@index']);
+
     Route::resource('domains', 'DomainsController');
+
     Route::resource('aliases', 'AliasesController');
+
     Route::resource('mailboxes', 'MailboxesController');
 });

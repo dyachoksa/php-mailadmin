@@ -15,9 +15,10 @@
                     <li><a href="{{ route('aliases.index') }}">{{ trans('pages.aliases.title') }}</a></li>
                     <li><a href="{{ route('mailboxes.index') }}">{{ trans('pages.mailboxes.title') }}</a></li>
                 </ul>
-                <form class="navbar-form navbar-left" role="search">
+                <form action="{{ route('search') }}" class="navbar-form navbar-left" role="search">
                     <div class="form-group">
-                        <input type="text" name="q" class="form-control" id="navbar-search-input" placeholder="Search">
+                        <input type="text" name="q" class="form-control" id="navbar-search-input"
+                               placeholder="{{ trans('labels.actions.search') }}">
                     </div>
                 </form>
             </div><!-- /.navbar-collapse -->

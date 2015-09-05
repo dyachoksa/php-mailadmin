@@ -31,6 +31,10 @@ return [
         ]
     ],
 
+    'search' => [
+        'title' => 'Search',
+    ],
+
     'mailboxes' => [
         'title' => 'Mailboxes',
         'create_link_title' => 'Create a new mailbox',
