@@ -29,7 +29,7 @@ or
 
     php composer.phar install
 
-Edit database connection settings in **app/config/database.php** and base url in **app/config/app.php**.
+Copy file **.env.example** to **.env** and edit it.
 Then run:
 
     php artisan key:generate
