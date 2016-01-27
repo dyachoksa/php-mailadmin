@@ -32,6 +32,7 @@ or
 Edit database connection settings in **app/config/database.php** and base url in **app/config/app.php**.
 Then run:
 
+    php artisan key:generate
     php artisan migrate
 
 Point your virtual host's document root to **public** folder.
